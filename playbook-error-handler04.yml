@@ -5,7 +5,7 @@
 ## within your enterprise
 
  - name: A playbook demonstrating Error Handling techniques
-   hosts: planetexpress
+   hosts: planetexpress, !farnsworth
    gather_facts: yes
 
    vars:
@@ -29,6 +29,7 @@
                   - name: PRECHECK PHASE - FAILED
                     fail:
                             msg: "PRECHECK PHASE - FAILED. Nothing to rollback. Exiting..."
+
 
            ## this is the block containing the work we actually want to do
            - name: MAINTENANCE PHASE
@@ -57,6 +58,7 @@
                   - name: MAINTENANCE PHASE - FAILED
                     fail:
                             msg: "MAINTENANCE PHASE - FAILED. Rollback complete. Exiting..."
+
            - name: POSTCHECK PHASE
              block:
 
